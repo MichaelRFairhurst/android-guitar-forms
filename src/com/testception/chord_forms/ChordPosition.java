@@ -33,13 +33,8 @@ class ChordPosition {
 		Collections.reverse(myfrets);
 	}
 
-	public List<Fretting> getFrettingsForString(int string) {
-		ArrayList<Fretting> response = new ArrayList<Fretting>();
-		for(Fretting f : myfrets) {
-			if(f.getString() == string) response.add(f);
-		}
-
-		return response;
+	public List<Fretting> getFrettings() {
+		return myfrets;
 	}
 
 	public String getName() {
