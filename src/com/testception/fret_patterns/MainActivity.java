@@ -1,4 +1,4 @@
-package com.testception.chord_forms;
+package com.testception.fret_patterns;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -12,17 +12,21 @@ import android.widget.Button;
 import android.util.TypedValue;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Gravity;
+import android.view.Menu;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
-
+import android.content.SharedPreferences;
+import android.content.Intent;
+import android.preference.PreferenceManager;
 import java.util.List;
 import java.util.ArrayList;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 
-public class MainActivity extends Activity
+public class MainActivity extends Activity implements OnSharedPreferenceChangeListener
 {
 	private FretboardView fretboard;
-	private ChordCollection chords = new ChordCollection();
-	private ChordPosition nextc;
+	private FretPatternCollection patterns;
+	private FretPattern nextp;
 	private int speed = 100;
 	private boolean running = false;
 	private Handler handler = new Handler();
@@ -30,7 +34,7 @@ public class MainActivity extends Activity
 	private Runnable timer_showtext = new Runnable() {
 		@Override
 		public void run() {
-			showNextChordName();
+			showNextPatternName();
 		}
 	};
 
@@ -48,6 +52,12 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+		SharedPreferences prefs;
+		prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		prefs.registerOnSharedPreferenceChangeListener(this);
+
+		patterns = new FretPatternCollection(prefs);
+		
 		fretboard = (FretboardView) findViewById(R.id.fretboard);
 		((SeekBar) findViewById(R.id.speed)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -64,22 +74,36 @@ public class MainActivity extends Activity
 		if(!running) {
 			handler.removeCallbacksAndMessages(null);
 		} else {
-			showNextChordName();
+			showNextPatternName();
 		}
 	}
 
-	private void showNextChordName() {
-		nextc = chords.getRandom(Chord.MAJOR | Chord.MINOR);
+	private void showNextPatternName() {
+		nextp = patterns.getRandom(2);
 		fretboard.clearFrettings();
 		TextView name = (TextView) findViewById(R.id.name);
-		name.setText(nextc.getName());
+		name.setText(nextp.getName());
 
 		handler.postDelayed(timer_showfrets, 3000 + 100 * speed);
 	}
 
 	private void showFrets() {
-		fretboard.setFrettings(nextc.getFrettings());
+		fretboard.setFrettings(nextp.getFrettings());
 
 		handler.postDelayed(timer_showtext, 3000 + 100 * speed);
 	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu){
+		startActivity(new Intent(this, PatternSettings.class));
+		//MenuInflater inflater = getMenuInflater();
+		//inflater.inflate(R.menu.menu, menu);
+		//return true;
+		return false;
+	}
+
+	public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
+		patterns = new FretPatternCollection(prefs);
+	}
+
 }

@@ -1,4 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">8 Note Chords</string>
+    <string name="app_name">Guitar Scale Practice</string>
+    <string name="pref_patterns">Patterns</string>
+    <string name="pref_positions">Positions</string>
+    <string name="pref_eight_note_major_sweeps">8 Note Major Sweeps</string>
+    <string name="pref_eight_note_major_sweeps_sum">Include sweepable major forms</string>
+    <string name="pref_eight_note_minor_sweeps">8 Note Minor Sweeps</string>
+    <string name="pref_eight_note_minor_sweeps_sum">Include sweepable minor forms</string>
+
+    <string name="pref_major_scales">Major Scales</string>
+    <string name="pref_major_scales_sum">Include major scale positions based on degree</string>
+    <string name="pref_dorian_scales">Dorian Scales</string>
+    <string name="pref_dorian_scales_sum">Include dorian scale positions based on degree</string>
+    <string name="pref_phrygian_scales">Phrygian Scales</string>
+    <string name="pref_phrygian_scales_sum">Include major scale positions based on degree</string>
+    <string name="pref_lydian_scales">Lydian Scales</string>
+    <string name="pref_lydian_scales_sum">Include lydian scale positions based on degree</string>
+    <string name="pref_mixolydian_scales">Mixolydian Scales</string>
+    <string name="pref_mixolydian_scales_sum">Include mixolydian scale positions based on degree</string>
+    <string name="pref_minor_scales">Minor Scales</string>
+    <string name="pref_minor_scales_sum">Include minor scale positions based on degree</string>
+    <string name="pref_locrian_scales">Locrian Scales</string>
+    <string name="pref_locrian_scales_sum">Include locrian scale positions based on degree</string>
+
+    <string name="pref_major_three_note_scales">Major Three Note Scales</string>
+    <string name="pref_major_three_note_scales_sum">Include major three note scale positions based on degree</string>
+    <string name="pref_dorian_three_note_scales">Dorian Three Note Scales</string>
+    <string name="pref_dorian_three_note_scales_sum">Include dorian three note scale positions based on degree</string>
+    <string name="pref_phrygian_three_note_scales">Phrygian Three Note Scales</string>
+    <string name="pref_phrygian_three_note_scales_sum">Include major three note scale positions based on degree</string>
+    <string name="pref_lydian_three_note_scales">Lydian Three Note Scales</string>
+    <string name="pref_lydian_three_note_scales_sum">Include lydian three note scale positions based on degree</string>
+    <string name="pref_mixolydian_three_note_scales">Mixolydian Three Note Scales</string>
+    <string name="pref_mixolydian_three_note_scales_sum">Include mixolydian three note scale positions based on degree</string>
+    <string name="pref_minor_three_note_scales">Minor Three Note Scales</string>
+    <string name="pref_minor_three_note_scales_sum">Include minor three note scale positions based on degree</string>
+    <string name="pref_locrian_three_note_scales">Locrian Three Note Scales</string>
+    <string name="pref_locrian_three_note_scales_sum">Include locrian three note scale positions based on degree</string>
+
+    <string name="pref_rand_root_notes">Randomize Root Notes</string>
+    <string name="pref_rand_root_notes_sum">Turn off to practice shapes without worrying about roots</string>
 </resources>

@@ -3,6 +3,7 @@
 	android:orientation="vertical"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
+	android:keepScreenOn="true"
 	>
 	<LinearLayout
 		android:orientation="vertical"
@@ -84,7 +85,7 @@
 		android:gravity="left|center_vertical"
 		android:padding="5dip"
 		/>
-	<com.testception.chord_forms.FretboardView
+	<com.testception.fret_patterns.FretboardView
 		android:id="@+id/fretboard"
 		android:layout_width="fill_parent"
 		android:layout_height="480dip"
@@ -92,12 +93,4 @@
 		android:layout_gravity="bottom"
 		android:background="@drawable/fretboard_bg"
 	/>
-	<RelativeLayout
-		android:id="@+id/fretsholder"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:orientation="vertical"
-		android:paddingTop="15dip"
-		android:layout_weight="0">
-	</RelativeLayout>
 </LinearLayout>

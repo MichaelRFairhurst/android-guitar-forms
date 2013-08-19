@@ -1,4 +1,4 @@
-package com.testception.chord_forms;
+package com.testception.fret_patterns;
 
 import java.util.ArrayList;
 import java.util.List;
