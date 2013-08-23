@@ -10,25 +10,33 @@ class FretPattern {
 	private List<Fretting> frettings;
 	private int type;
 	private int position;
-	private int note;
+	private Note root;
 
-	public FretPattern(String myname, List<Fretting> myfrettings, int myposition, int mynote) {
+	public FretPattern(String myname, List<Fretting> myfrettings, int myposition, Note myroot) {
 		frettings = myfrettings;
 		name = myname;
-		note = mynote;
+		root = myroot;
 		position = myposition;
+	}
+
+	public void setRoot(Note mynewroot) {
+		root = mynewroot;
+	}
+
+	public Note getRoot() {
+		return root;
 	}
 
 	public void setName(String mynewname) {
 		name = mynewname;
 	}
 
-	public int getPosition() {
-		return position;
-	}
-
 	public void setPosition(int mynewposition) {
 		position = mynewposition;
+	}
+
+	public int getPosition() {
+		return position;
 	}
 
 	public List<Fretting> getFrettings() {
@@ -36,7 +44,7 @@ class FretPattern {
 	}
 
 	public String getName() {
-		return names[note] + " " + name + " Pos #" + position;
+		return root.getName() + " " + name + " Pos #" + position;
 	}
 
 	public FretPattern transpose(int interval) {
@@ -50,6 +58,6 @@ class FretPattern {
 			transposed.add(f.transpose(octavedown ? interval - 12 : interval));
 		}
 
-		return new FretPattern(name, transposed, position, note + interval > 11 ? note + interval - 12 : note + interval);
+		return new FretPattern(name, transposed, position, root.transpose(interval));
 	}
 }

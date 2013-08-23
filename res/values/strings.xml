@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Guitar Scale Practice</string>
+    <string name="app_name">Guitar Scales + Fret Patterns</string>
+	<string name="title">Guitar Scales + Fret Patterns</string>
+	<string name="subtitle">Click settings for more scales and sweep patterns</string>
+
     <string name="pref_patterns">Patterns</string>
     <string name="pref_positions">Positions</string>
     <string name="pref_eight_note_major_sweeps">8 Note Major Sweeps</string>

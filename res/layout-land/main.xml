@@ -6,29 +6,6 @@
 	android:keepScreenOn="true"
 	>
 	<LinearLayout
-		android:orientation="vertical"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:background="@drawable/top_gradient"
-		android:layout_weight="2"
-		android:layout_gravity="top"
-		android:padding="5dip"
-		>
-		<TextView
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:text="@string/title"
-			android:textSize="20sp"
-			/>
-		<TextView
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:text="@string/subtitle"
-			android:textSize="10sp"
-			android:gravity="right"
-			/>
-	</LinearLayout>
-	<LinearLayout
 		android:orientation="horizontal"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
