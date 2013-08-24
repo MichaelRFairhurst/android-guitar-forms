@@ -12,10 +12,8 @@ import android.view.Menu;
 import android.content.SharedPreferences;
 import android.content.Intent;
 import android.preference.PreferenceManager;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 
-public class MainActivity extends Activity implements OnSharedPreferenceChangeListener
-{
+public class MainActivity extends Activity {
 	private ProgressBar mprogress;
 	private int progress = 0;
 	private FretboardView fretboard;
@@ -41,8 +39,6 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
 
 		SharedPreferences prefs;
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
-		prefs.registerOnSharedPreferenceChangeListener(this);
-
 		patterns = new FretPatternCollection(prefs);
 
 		fretboard = (FretboardView) findViewById(R.id.fretboard);
@@ -59,7 +55,7 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
 
 	public void startStop(View view) {
 		running = !running;
-		((Button) view).setText(running ? "Stop" : "Start");
+		((Button) view).setText(running ? R.string.start : R.string.stop);
 		if(!running) {
 			handler.removeCallbacksAndMessages(null);
 		} else {
@@ -90,14 +86,7 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu){
 		startActivity(new Intent(this, PatternSettings.class));
-		//MenuInflater inflater = getMenuInflater();
-		//inflater.inflate(R.menu.menu, menu);
-		//return true;
 		return false;
-	}
-
-	public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-		patterns = new FretPatternCollection(prefs);
 	}
 
 }

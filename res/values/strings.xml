@@ -3,6 +3,11 @@
     <string name="app_name">Guitar Scales + Fret Patterns</string>
 	<string name="title">Guitar Scales + Fret Patterns</string>
 	<string name="subtitle">Click settings for more scales and sweep patterns</string>
+	<string name="press_start">Press Start To Begin</string>
+	<string name="start">Start</string>
+	<string name="stop">Stop</string>
+	<string name="fast">Fast</string>
+	<string name="slow">Slow</string>
 
     <string name="pref_patterns">Patterns</string>
     <string name="pref_positions">Positions</string>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	style="@style/Stacked"
+	android:orientation="vertical"
+	android:background="@drawable/top_gradient"
+	android:layout_weight="2"
+	android:layout_gravity="top"
+	android:padding="5dip"
+	>
+	<TextView
+		style="@style/Stacked"
+		android:text="@string/title"
+		android:textSize="20sp"
+		/>
+	<TextView
+		style="@style/Stacked"
+		android:text="@string/subtitle"
+		android:textSize="10sp"
+		android:gravity="right"
+		/>
+</LinearLayout>

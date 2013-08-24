@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
-     
+
     <PreferenceCategory android:title="@string/pref_positions" >
         <CheckBoxPreference
             android:defaultValue="true"
@@ -20,6 +20,11 @@
             android:key="pref_dorian_scales"
             android:summary="@string/pref_dorian_scales_sum"
             android:title="@string/pref_dorian_scales" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_phrygian_scales"
+            android:summary="@string/pref_phrygian_scales_sum"
+            android:title="@string/pref_phrygian_scales" />
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="pref_lydian_scales"
@@ -52,6 +57,11 @@
             android:title="@string/pref_dorian_three_note_scales" />
         <CheckBoxPreference
             android:defaultValue="false"
+            android:key="pref_phrygian_three_note_scales"
+            android:summary="@string/pref_phrygian_three_note_scales_sum"
+            android:title="@string/pref_phrygian_three_note_scales" />
+        <CheckBoxPreference
+            android:defaultValue="false"
             android:key="pref_lydian_three_note_scales"
             android:summary="@string/pref_lydian_three_note_scales_sum"
             android:title="@string/pref_lydian_three_note_scales" />
@@ -62,7 +72,7 @@
             android:title="@string/pref_mixolydian_three_note_scales" />
         <CheckBoxPreference
             android:defaultValue="true"
-            android:key="pref_minor_scales"
+            android:key="pref_minor_three_note_scales"
             android:summary="@string/pref_minor_three_note_scales_sum"
             android:title="@string/pref_minor_three_note_scales" />
         <CheckBoxPreference
@@ -81,5 +91,5 @@
             android:summary="@string/pref_eight_note_minor_sweeps_sum"
             android:title="@string/pref_eight_note_minor_sweeps" />
     </PreferenceCategory>
- 
+
 </PreferenceScreen>

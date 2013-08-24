@@ -23,6 +23,8 @@ public class FretboardView extends View {
 	private ArrayList<Drawable> strings = new ArrayList<Drawable>();
 	private ArrayList<Drawable> frets = new ArrayList<Drawable>();
 	private List<Fretting> frettings = new ArrayList<Fretting>();
+	private Paint paint = new Paint();
+
 	private float strheight;
 	private float stroffs;
 	private int fretwidth = 7;
@@ -72,10 +74,9 @@ public class FretboardView extends View {
 		for(Drawable s : strings) s.draw(canvas);
 
 		Resources res = getResources();
-		Paint paint = new Paint(); 
 		paint.setStyle(Paint.Style.FILL);;
-		paint.setColor(0xFF000000); 
-		paint.setTextSize(10); 
+		paint.setColor(0xFF000000);
+		paint.setTextSize(10);
 		paint.setAntiAlias(true);
 
 		for(Fretting f : frettings) {

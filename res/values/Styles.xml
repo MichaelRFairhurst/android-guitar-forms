@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-	<style name="GradientLeft">
+	<style name="GlobalContainer">
+		<item name="android:orientation">vertical</item>
+		<item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">fill_parent</item>
+		<item name="android:keepScreenOn">true</item>
+	</style>
+
+	<style name="Stacked">
 		<item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">wrap_content</item>
+	</style>
+
+	<style name="GradientLeft" parent="@style/Stacked">
 		<item name="android:background">@drawable/stackable_gradient_left</item>
 		<item name="android:textSize">15sp</item>
 		<item name="android:gravity">right|center_vertical</item>
@@ -17,4 +27,33 @@
 		<item name="android:gravity">left|center_vertical</item>
 	</style>
 
+	<style name="ProgressBar" parent="@android:style/Widget.ProgressBar.Horizontal">
+		<item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">3dip</item>
+		<item name="android:progressDrawable">@drawable/doubleprogress</item>
+	</style>
+
+	<style name="SpeedBar">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">20dip</item>
+		<item name="android:layout_weight">5</item>
+		<item name="android:thumb">@drawable/speed_thumb</item>
+		<item name="android:progressDrawable">@drawable/singleprogress</item>
+		<item name="android:thumbOffset">15px</item>
+	</style>
+
+	<style name="SpeedText">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:gravity">center</item>
+		<item name="android:layout_weight">1</item>
+	</style>
+
+	<style name="FretBoard">
+		<item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">480dip</item>
+		<item name="android:layout_weight">1</item>
+		<item name="android:layout_gravity">bottom</item>
+		<item name="android:background">@drawable/fretboard_bg</item>
+	</style>
 </resources>

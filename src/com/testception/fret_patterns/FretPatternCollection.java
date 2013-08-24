@@ -4,18 +4,63 @@ import java.util.Random;
 import java.util.List;
 import java.util.ArrayList;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 
-class FretPatternCollection {
+class FretPatternCollection implements OnSharedPreferenceChangeListener {
 
-	private List<FretPattern> patterns = new ArrayList<FretPattern>();
+	private List<FretPattern> patterns;
 	private SharedPreferences prefs;
+	private Random rand = new Random();
+
+	public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
+		createFromPreferences(prefs);
+	}
 
 	public FretPatternCollection(SharedPreferences myprefs) {
+		createFromPreferences(myprefs);
+		prefs.registerOnSharedPreferenceChangeListener(this);
+	}
 
+	public FretPattern getRandom(int type) {
+		if(patterns.size() == 0) return new FretPattern("None selected", new ArrayList<Fretting>(), 0, new Note("E"));
+		int transpose = 0;
+
+		if(prefs.getBoolean("pref_rand_root_notes", true)) {
+			transpose = rand.nextInt(11);
+		}
+
+		return patterns.get(rand.nextInt(patterns.size())).transpose(transpose);
+	}
+
+	private void createFromPreferences(SharedPreferences myprefs) {
 		prefs = myprefs;
-		addMajorBasedScales();
-		addThreeNoteMajor();
+		patterns = new ArrayList<FretPattern>();
 
+		addMajorBasedScales();
+		addThreeNoteMajorBasedScales();
+		addSweeps();
+	}
+
+	private void addModalBasesOfMajor(ArrayList<FretPattern> mscales, String prefsuffix, String namesuffix) {
+		String[] modes = { "dorian", "phrygian", "lydian", "mixolydian", "minor", "locrian" };
+		int[] rootchanges = { 2, 4, 5, 7, 9, 11 };
+
+		for(FretPattern major : mscales) {
+			if(prefs.getBoolean("pref_major" + prefsuffix, true)) patterns.add(major);
+			for(int i = 0; i < modes.length; i++) {
+				if(prefs.getBoolean("pref_" + modes[i] + prefsuffix, false)) {
+					FretPattern mode = major.transpose(0);
+					int newposition = major.getPosition() + 6 - i;
+					mode.setPosition(newposition > 7 ? newposition - 7 : newposition);
+					mode.setName(modes[i] + namesuffix);
+					mode.setRoot(mode.getRoot().transpose(rootchanges[i]));
+					patterns.add(mode);
+				}
+			}
+		}
+	}
+
+	private void addSweeps() {
 		if(prefs.getBoolean("pref_eight_note_minor_sweeps", false)) {
 			ArrayList<Fretting> chord = new ArrayList<Fretting>();
 			chord.add(new Fretting(3, 0));
@@ -151,18 +196,6 @@ class FretPatternCollection {
 			chord.add(new Fretting(12, 5));
 			patterns.add(new FretPattern("major 8 note sweep", chord, 6, new Note("E")));
 		}
-	}
-
-	public FretPattern getRandom(int type) {
-		if(patterns.size() == 0) return new FretPattern("None selected", new ArrayList<Fretting>(), 0, new Note("E"));
-		int transpose = 0;
-		Random rand = new Random();
-
-		if(prefs.getBoolean("pref_rand_root_notes", true)) {
-			transpose = rand.nextInt(11);
-		}
-
-		return patterns.get(rand.nextInt(patterns.size())).transpose(transpose);
 	}
 
 	private void addMajorBasedScales() {
@@ -307,7 +340,7 @@ class FretPatternCollection {
 		addModalBasesOfMajor(mscales, "_scales", " scale");
 	}
 
-	private void addThreeNoteMajor() {
+	private void addThreeNoteMajorBasedScales() {
 		ArrayList<FretPattern> m3scale = new ArrayList<FretPattern>();
 		ArrayList<Fretting> scale = new ArrayList<Fretting>();
 		scale = new ArrayList<Fretting>();
@@ -331,7 +364,6 @@ class FretPatternCollection {
 		scale.add(new Fretting(3, 5));
 		m3scale.add(new FretPattern("major 3 note scale", scale, 1, new Note("G")));
 
-		m3scale = new ArrayList<FretPattern>();
 		scale = new ArrayList<Fretting>();
 		scale.add(new Fretting(10, 0));
 		scale.add(new Fretting(8, 0));
@@ -353,7 +385,6 @@ class FretPatternCollection {
 		scale.add(new Fretting(5, 5));
 		m3scale.add(new FretPattern("major 3 note scale", scale, 2, new Note("G")));
 
-		m3scale = new ArrayList<FretPattern>();
 		scale = new ArrayList<Fretting>();
 		scale.add(new Fretting(12, 0));
 		scale.add(new Fretting(10, 0));
@@ -375,7 +406,6 @@ class FretPatternCollection {
 		scale.add(new Fretting(7, 5));
 		m3scale.add(new FretPattern("major 3 note scale", scale, 3, new Note("G")));
 
-		m3scale = new ArrayList<FretPattern>();
 		scale = new ArrayList<Fretting>();
 		scale.add(new Fretting(14, 0));
 		scale.add(new Fretting(12, 0));
@@ -397,7 +427,6 @@ class FretPatternCollection {
 		scale.add(new Fretting(8, 5));
 		m3scale.add(new FretPattern("major 3 note scale", scale, 4, new Note("G")));
 
-		m3scale = new ArrayList<FretPattern>();
 		scale = new ArrayList<Fretting>();
 		scale.add(new Fretting(15, 0));
 		scale.add(new Fretting(14, 0));
@@ -419,7 +448,6 @@ class FretPatternCollection {
 		scale.add(new Fretting(10, 5));
 		m3scale.add(new FretPattern("major 3 note scale", scale, 5, new Note("G")));
 
-		m3scale = new ArrayList<FretPattern>();
 		scale = new ArrayList<Fretting>();
 		scale.add(new Fretting(5, 0));
 		scale.add(new Fretting(3, 0));
@@ -441,7 +469,6 @@ class FretPatternCollection {
 		scale.add(new Fretting(0, 5));
 		m3scale.add(new FretPattern("major 3 note scale", scale, 6, new Note("G")));
 
-		m3scale = new ArrayList<FretPattern>();
 		scale = new ArrayList<Fretting>();
 		scale.add(new Fretting(7, 0));
 		scale.add(new Fretting(5, 0));
@@ -464,24 +491,5 @@ class FretPatternCollection {
 		m3scale.add(new FretPattern("major 3 note scale", scale, 7, new Note("G")));
 
 		addModalBasesOfMajor(m3scale, "_three_note_scales", " 3 note scale");
-	}
-
-	private void addModalBasesOfMajor(ArrayList<FretPattern> mscales, String prefsuffix, String namesuffix) {
-		String[] modes = { "dorian", "phrygian", "lydian", "mixolydian", "minor", "locrian" };
-		int[] rootchanges = { 2, 4, 5, 7, 9, 11 };
-
-		for(FretPattern major : mscales) {
-			if(prefs.getBoolean("pref_major" + prefsuffix, true)) patterns.add(major);
-			for(int i = 0; i < modes.length; i++) {
-				if(prefs.getBoolean("pref_" + modes[i] + prefsuffix, false)) {
-					FretPattern mode = major.transpose(0);
-					int newposition = major.getPosition() + 6 - i;
-					mode.setPosition(newposition > 7 ? newposition - 7 : newposition);
-					mode.setName(modes[i] + namesuffix);
-					mode.setRoot(mode.getRoot().transpose(rootchanges[i]));
-					patterns.add(mode);
-				}
-			}
-		}
 	}
 }
