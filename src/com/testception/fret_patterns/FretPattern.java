@@ -2,6 +2,7 @@ package com.testception.fret_patterns;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.lang.Math;
 
 class FretPattern {
 
@@ -59,5 +60,13 @@ class FretPattern {
 		}
 
 		return new FretPattern(name, transposed, position, root.transpose(interval));
+	}
+
+	public int getLowestFret() {
+		int lowestfret = 24;
+		for(Fretting f : frettings) {
+			lowestfret = Math.min(lowestfret, f.getFret());
+		}
+		return lowestfret;
 	}
 }

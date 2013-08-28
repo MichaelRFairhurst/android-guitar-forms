@@ -9,12 +9,33 @@
 	<string name="fast">Fast</string>
 	<string name="slow">Slow</string>
 
-    <string name="pref_patterns">Patterns</string>
     <string name="pref_positions">Positions</string>
+    <string name="pref_positions_sum">Settings on how the scales you\'ve chosen will display</string>
+    <string name="pref_standard">Standard Scales</string>
+    <string name="pref_standard_sum">Classical forms made to minimize movement</string>
+    <string name="pref_three_note">Three Note Scales</string>
+    <string name="pref_three_note_sum">Forms with three notes per string to accomodate fast picking</string>
+    <string name="pref_pentatonic">Pentatonic Scales</string>
+    <string name="pref_pentatonic_sum">Bluesy/Rock scales based on major and minor but with only five notes</string>
+    <string name="pref_sweeps">Eight note sweeps</string>
+    <string name="pref_sweeps_sum">Major and minor arpeggios with eight notes intended for sweep picking</string>
+
+    <string name="pref_position_type">Position type</string>
+    <string name="pref_position_type_sum">Base positions on scale degree or by lowest playable form</string>
+	<string name="pref_minimum_position">Minimum position</string>
+    <string name="pref_minimum_position_sum">Practice a specific position range beginning here</string>
+	<string name="pref_maximum_position">Maximum position</string>
+    <string name="pref_maximum_position_sum">Practice a specific position range ending here; highest position for pentatonic scales is fifth, for sweeps is sixth, and for all others the hightest is seventh</string>
+
     <string name="pref_eight_note_major_sweeps">8 Note Major Sweeps</string>
     <string name="pref_eight_note_major_sweeps_sum">Include sweepable major forms</string>
     <string name="pref_eight_note_minor_sweeps">8 Note Minor Sweeps</string>
     <string name="pref_eight_note_minor_sweeps_sum">Include sweepable minor forms</string>
+
+    <string name="pref_major_pentatonic_scales">Major Pentatonic Scales</string>
+    <string name="pref_major_pentatonic_scales_sum">Include major pentatonic scale positions based on degree</string>
+    <string name="pref_minor_pentatonic_scales">Minor Pentatonic Scales</string>
+    <string name="pref_minor_pentatonic_scales_sum">Include minor pentatonic scale positions based on degree</string>
 
     <string name="pref_major_scales">Major Scales</string>
     <string name="pref_major_scales_sum">Include major scale positions based on degree</string>

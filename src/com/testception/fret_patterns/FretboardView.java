@@ -25,17 +25,27 @@ public class FretboardView extends View {
 	private List<Fretting> frettings = new ArrayList<Fretting>();
 	private Paint paint = new Paint();
 
+	private float density;
+	private int fretovalsize;
 	private float strheight;
 	private float stroffs;
 	private int fretwidth = 7;
-	private int fretoffs = 10;
+	private int fretoffs = 16;
 	private float fretgap;
 	private int lowestfret = 0;
+
+	private int getDIP(int pixels) {
+		return (int) (pixels * density + 0.5);
+	}
 
 	public FretboardView (Context context, AttributeSet attrs) {
 		super(context, attrs);
 
 		Resources res = getResources();
+		density = res.getDisplayMetrics().density;
+		fretwidth = getDIP(fretwidth);
+		fretoffs = getDIP(fretoffs);
+		fretovalsize = getDIP(12);
 
 		for(int i = 0; i < 6; i++) {
 			Drawable string = res.getDrawable(R.drawable.fretboard_string);
@@ -59,13 +69,13 @@ public class FretboardView extends View {
 		stroffs = strheight / 2;
 		for(int i = 0; i < 6; i++) {
 			int myh = getStringY(i);
-			strings.get(i).setBounds(0, myh - 1, w, myh + 1);
+			strings.get(i).setBounds(0, myh - getDIP(1), w, myh + getDIP(1));
 		}
 
-		fretgap = (w - fretoffs * 2 - fretwidth) / 5;
+		fretgap = (w - fretoffs * 2 - fretwidth * 0) / 5;
 		for(int i = 0; i < 6; i++) {
 			int mygap = getFretX(i);
-			frets.get(i).setBounds((int) Math.floor(mygap - fretwidth / 2), 3, (int) Math.floor(mygap + fretwidth / 2), h - 3);
+			frets.get(i).setBounds((int) Math.floor(mygap - fretwidth / 2), getDIP(3), (int) Math.floor(mygap + fretwidth / 2), h - getDIP(3));
 		}
 	}
 
@@ -76,17 +86,17 @@ public class FretboardView extends View {
 		Resources res = getResources();
 		paint.setStyle(Paint.Style.FILL);;
 		paint.setColor(0xFF000000);
-		paint.setTextSize(10);
+		paint.setTextSize(getDIP(14));
 		paint.setAntiAlias(true);
 
 		for(Fretting f : frettings) {
 			Drawable fretoval = res.getDrawable(R.drawable.fretboard_fretoval);
 			int y = getStringY(f.getString());
 			int x = getFretX(f.getFret() - lowestfret);
-			fretoval.setBounds(x - 10, y - 10, x + 10, y + 10);
+			fretoval.setBounds(x - fretovalsize, y - fretovalsize, x + fretovalsize, y + fretovalsize);
 			fretoval.draw(canvas);
 			String fretstring = String.valueOf(f.getFret());
-			canvas.drawText(fretstring, x - paint.measureText(fretstring)/2, y + 4, paint);
+			canvas.drawText(fretstring, x - paint.measureText(fretstring)/2, y + getDIP(5), paint);
 		}
 	}
 
@@ -96,23 +106,28 @@ public class FretboardView extends View {
 		int heightMode = MeasureSpec.getMode(heightMeasureSpec);
 		int heightSize = MeasureSpec.getSize(heightMeasureSpec);
 
-		int width;
-		int height;
+		int width = getDIP(500);
+		int height = getDIP(185);
 
-		/*switch(heightMode) {
+		switch(widthMode) {
 			case MeasureSpec.EXACTLY:
 				width = widthSize;
+				break;
+
+			case MeasureSpec.AT_MOST:
+				width = Math.min(width, widthSize);
+				break;
+		}
+
+		switch(heightMode) {
+			case MeasureSpec.EXACTLY:
 				height = heightSize;
 				break;
 
-			case MeasureSpec.AT_MOST:*/
-				width = widthSize;
-				height = Math.min((int) Math.floor(width/2), 150);
-				if(heightMode == MeasureSpec.AT_MOST && height > heightSize) height = heightSize;
-			/*default:
-				width = widthSize;
-				height = (int) Math.floor(width/2);
-		}*/
+			case MeasureSpec.AT_MOST:
+				height = Math.min(height, heightSize);
+				break;
+		}
 
 		setMeasuredDimension(width, height);
 	}
@@ -125,18 +140,15 @@ public class FretboardView extends View {
 		return (int) Math.floor(strheight * i + stroffs);
 	}
 
-	public void setFrettings(List<Fretting> newfrettings) {
-		lowestfret = 24;
-		for(Fretting f : newfrettings) {
-			lowestfret = Math.min(lowestfret, f.getFret());
-		}
+	public void setFretPattern(FretPattern newpattern) {
+		lowestfret = newpattern.getLowestFret();
 
-		frettings = newfrettings;
+		frettings = newpattern.getFrettings();
 		postInvalidate();
 	}
 
 	public void clearFrettings() {
-		frettings.clear();
+		frettings = (List<Fretting>) new ArrayList<Fretting>();
 		postInvalidate();
 	}
 

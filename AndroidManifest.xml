@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.testception.fret_patterns"
-      android:versionCode="1"
-      android:versionName="1.1">
+      android:versionCode="3"
+      android:versionName="1.2">
 	<uses-sdk android:minSdkVersion="4" />
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher"
 		android:theme="@android:style/Theme.NoTitleBar">
@@ -13,13 +13,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="PatternSettings"
+        <activity android:name=".PatternSettingsActivity"
 
-			android:label="what is this"
-			android:parentActivityName="MainActivity" >
+			android:label="what is this">
+			<!--android:parentActivityName="MainActivity" >
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value="MainActivity" />
+				android:value="MainActivity" />-->
+            <intent-filter>
+                <action android:name="PositionsFragment" />
+                <action android:name="PentatonicFragment" />
+                <action android:name="StandardFragment" />
+                <action android:name="ThreeNoteFragment" />
+                <action android:name="SweepsFragment" />
+            </intent-filter>
         </activity>
     </application>
 </manifest>

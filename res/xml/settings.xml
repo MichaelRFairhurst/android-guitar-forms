@@ -9,7 +9,24 @@
             android:title="@string/pref_rand_root_notes" />
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/pref_patterns" >
+    <PreferenceCategory android:title="@string/pref_pentatonic"
+		android:summary="@string/pref_pentatonic_sum"
+		>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_major_pentatonic_scales"
+            android:summary="@string/pref_major_pentatonic_scales_sum"
+            android:title="@string/pref_major_pentatonic_scales" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_minor_pentatonic_scales"
+            android:summary="@string/pref_minor_pentatonic_scales_sum"
+            android:title="@string/pref_minor_pentatonic_scales" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_standard"
+		android:summary="@string/pref_standard_sum"
+		>
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="pref_major_scales"
@@ -45,6 +62,11 @@
             android:key="pref_locrian_scales"
             android:summary="@string/pref_locrian_scales_sum"
             android:title="@string/pref_locrian_scales" />
+	</PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_three_note"
+		android:summary="@string/pref_three_note_sum"
+		>
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="pref_major_three_note_scales"
@@ -80,6 +102,11 @@
             android:key="pref_locrian_three_note_scales"
             android:summary="@string/pref_locrian_three_note_scales_sum"
             android:title="@string/pref_locrian_three_note_scales" />
+	</PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_sweeps"
+		android:summary="@string/pref_sweeps_sum"
+		>
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="pref_eight_note_major_sweeps"

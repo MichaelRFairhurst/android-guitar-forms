@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+	<CheckBoxPreference
+		android:defaultValue="true"
+		android:key="pref_major_scales"
+		android:summary="@string/pref_major_scales_sum"
+		android:title="@string/pref_major_scales" />
+	<CheckBoxPreference
+		android:defaultValue="false"
+		android:key="pref_dorian_scales"
+		android:summary="@string/pref_dorian_scales_sum"
+		android:title="@string/pref_dorian_scales" />
+	<CheckBoxPreference
+		android:defaultValue="false"
+		android:key="pref_phrygian_scales"
+		android:summary="@string/pref_phrygian_scales_sum"
+		android:title="@string/pref_phrygian_scales" />
+	<CheckBoxPreference
+		android:defaultValue="false"
+		android:key="pref_lydian_scales"
+		android:summary="@string/pref_lydian_scales_sum"
+		android:title="@string/pref_lydian_scales" />
+	<CheckBoxPreference
+		android:defaultValue="false"
+		android:key="pref_mixolydian_scales"
+		android:summary="@string/pref_mixolydian_scales_sum"
+		android:title="@string/pref_mixolydian_scales" />
+	<CheckBoxPreference
+		android:defaultValue="true"
+		android:key="pref_minor_scales"
+		android:summary="@string/pref_minor_scales_sum"
+		android:title="@string/pref_minor_scales" />
+	<CheckBoxPreference
+		android:defaultValue="false"
+		android:key="pref_locrian_scales"
+		android:summary="@string/pref_locrian_scales_sum"
+		android:title="@string/pref_locrian_scales" />
+</PreferenceScreen>

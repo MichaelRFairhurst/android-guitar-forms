@@ -10,12 +10,12 @@
 	<TextView
 		style="@style/Stacked"
 		android:text="@string/title"
-		android:textSize="20sp"
+		android:textSize="25sp"
 		/>
 	<TextView
 		style="@style/Stacked"
 		android:text="@string/subtitle"
-		android:textSize="10sp"
+		android:textSize="15sp"
 		android:gravity="right"
 		/>
 </LinearLayout>

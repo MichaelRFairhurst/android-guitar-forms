@@ -30,7 +30,6 @@ public class MainActivity extends Activity {
 		}
 	};
 
-    /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -53,9 +52,15 @@ public class MainActivity extends Activity {
 		});
     }
 
+	@Override
+	public void onStop() {
+		if(running) startStop(findViewById(R.id.startstop));
+		super.onStop();
+	}
+
 	public void startStop(View view) {
 		running = !running;
-		((Button) view).setText(running ? R.string.start : R.string.stop);
+		((Button) view).setText(running ? R.string.stop : R.string.start);
 		if(!running) {
 			handler.removeCallbacksAndMessages(null);
 		} else {
@@ -66,7 +71,7 @@ public class MainActivity extends Activity {
 	private void tick() {
 		int lprogress = progress;
 		progress = (progress + speed) % 5000;
-		if(lprogress == 0 || progress < lprogress) showNextPatternName();
+		if(nextp == null || progress < lprogress) showNextPatternName();
 		if(lprogress <= 2500 && progress >= 2500) showFrets();
 		mprogress.setProgress(progress);
 		handler.postDelayed(tick, 17);
@@ -80,12 +85,12 @@ public class MainActivity extends Activity {
 	}
 
 	private void showFrets() {
-		fretboard.setFrettings(nextp.getFrettings());
+		fretboard.setFretPattern(nextp);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu){
-		startActivity(new Intent(this, PatternSettings.class));
+		startActivity(new Intent(this, PatternSettingsActivity.class));
 		return false;
 	}
 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+	<ListPreference
+        android:key="pref_position_type"
+        android:title="@string/pref_position_type"
+        android:summary="@string/pref_position_type_sum"
+        android:entries="@array/pref_position_type_entries"
+		android:entryValues="@array/pref_position_type_values"
+		android:defaultValue="degree" />
+	<CheckBoxPreference
+		android:defaultValue="true"
+		android:key="pref_rand_root_notes"
+		android:summary="@string/pref_rand_root_notes_sum"
+		android:title="@string/pref_rand_root_notes" />
+	<ListPreference
+        android:key="pref_minimum_position"
+        android:title="@string/pref_minimum_position"
+        android:summary="@string/pref_minimum_position_sum"
+        android:entries="@array/pref_position_entries"
+		android:entryValues="@array/pref_position_values"
+		android:defaultValue="1" />
+	<ListPreference
+        android:key="pref_maximum_position"
+        android:title="@string/pref_maximum_position"
+        android:summary="@string/pref_maximum_position_sum"
+        android:entries="@array/pref_position_entries"
+		android:entryValues="@array/pref_position_values"
+		android:defaultValue="7" />
+</PreferenceScreen>

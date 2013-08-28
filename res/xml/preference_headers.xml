@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
+    <header
+        android:fragment="com.testception.fret_patterns.PatternSettingsActivity$LegacyFragment"
+		android:summary="@string/pref_positions_sum"
+    	android:title="@string/pref_positions" />
+    <header
+        android:fragment="com.testception.fret_patterns.PatternSettingsActivity$PositionsFragment"
+		android:summary="@string/pref_positions_sum"
+    	android:title="@string/pref_positions" />
+    <header
+        android:fragment="com.testception.fret_patterns.PatternSettingsActivity$PentatonicFragment"
+    	android:summary="@string/pref_pentatonic_sum"
+    	android:title="@string/pref_pentatonic" />
+    <header
+        android:fragment="com.testception.fret_patterns.PatternSettingsActivity$StandardFragment"
+    	android:summary="@string/pref_standard_sum"
+    	android:title="@string/pref_standard" />
+    <header
+        android:fragment="com.testception.fret_patterns.PatternSettingsActivity$ThreeNoteFragment"
+    	android:summary="@string/pref_three_note_sum"
+    	android:title="@string/pref_three_note" />
+    <header
+        android:fragment="com.testception.fret_patterns.PatternSettingsActivity$SweepsFragment"
+    	android:summary="@string/pref_sweeps_sum"
+    	android:title="@string/pref_sweeps" />
+</preference-headers>
