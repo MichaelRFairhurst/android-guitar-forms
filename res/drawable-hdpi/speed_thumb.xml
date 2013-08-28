@@ -3,14 +3,17 @@
 	android:shape="rectangle"
 >
 	<gradient
+		android:type="radial"
+		android:gradientRadius="2500%p"
 		android:endColor="#00659889"
 		android:centerColor="#ff659889"
-		android:startColor="#00659889"
-		android:centerX="0.5"
+		android:startColor="#ff659889"
+		android:centerX=".5"
+		android:centerY=".33"
 		android:height="30dp"
-		android:width="40dp" />
+		android:width="20dp" />
 
 	<size
 		android:height="30dp"
-		android:width="30dp" />
+		android:width="20dp" />
 </shape>

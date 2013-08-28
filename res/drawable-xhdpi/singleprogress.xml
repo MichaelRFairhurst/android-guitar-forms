@@ -1,4 +1,6 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+				<size
+					android:height="10dp" />
 	<item android:id="@android:id/background">
 		<shape>
 				<corners android:radius="5dip"/>

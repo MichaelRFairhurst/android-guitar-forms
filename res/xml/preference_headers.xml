@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
     <header
-        android:fragment="com.testception.fret_patterns.PatternSettingsActivity$LegacyFragment"
-		android:summary="@string/pref_positions_sum"
-    	android:title="@string/pref_positions" />
-    <header
         android:fragment="com.testception.fret_patterns.PatternSettingsActivity$PositionsFragment"
 		android:summary="@string/pref_positions_sum"
     	android:title="@string/pref_positions" />

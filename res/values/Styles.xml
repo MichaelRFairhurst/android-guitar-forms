@@ -35,11 +35,17 @@
 
 	<style name="SpeedBar">
 		<item name="android:layout_width">wrap_content</item>
-		<item name="android:layout_height">20dip</item>
+		<item name="android:layout_height">25dip</item>
 		<item name="android:layout_weight">5</item>
+		<item name="android:minHeight">14dip</item>
+		<item name="android:maxHeight">14dip</item>
+		<item name="android:layout_marginTop">4dip</item>
+		<item name="android:paddingBottom">4dip</item>
+		<item name="android:paddingLeft">4dip</item>
+		<item name="android:paddingRight">4dip</item>
 		<item name="android:thumb">@drawable/speed_thumb</item>
 		<item name="android:progressDrawable">@drawable/singleprogress</item>
-		<item name="android:thumbOffset">15px</item>
+		<item name="android:thumbOffset">3dip</item>
 	</style>
 
 	<style name="SpeedText">
